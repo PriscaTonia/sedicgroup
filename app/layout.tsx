@@ -4,7 +4,7 @@ import { Inter, Manrope } from "next/font/google";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
 import { ThemeProvider } from "@/components/layout/theme-provider";
-import { siteConfig } from "@/lib/data";
+import { getSiteUrl, siteConfig } from "@/lib/data";
 
 import "./globals.css";
 
@@ -19,6 +19,8 @@ const inter = Inter({
   subsets: ["latin"],
   display: "swap",
 });
+
+const siteUrl = getSiteUrl();
 
 export const metadata: Metadata = {
   title: {
@@ -40,14 +42,14 @@ export const metadata: Metadata = {
   authors: [{ name: siteConfig.name }],
   creator: siteConfig.name,
   publisher: siteConfig.name,
-  metadataBase: new URL(siteConfig.url),
+  metadataBase: new URL(siteUrl),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     title: `${siteConfig.name} — ${siteConfig.tagline}`,
     description: siteConfig.description,
-    url: siteConfig.url,
+    url: siteUrl,
     siteName: siteConfig.name,
     locale: "en_NG",
     type: "website",
@@ -57,6 +59,7 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         alt: `${siteConfig.name} logo`,
+        type: "image/jpeg",
       },
     ],
   },

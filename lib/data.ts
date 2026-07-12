@@ -55,12 +55,24 @@ export type ContactInfo = {
 export const siteConfig = {
   name: "Sedic Group",
   tagline: "The World's African Business Partner",
+  /** Keep ~125–150 chars for search & social previews */
   description:
-    "Sedic Group is a multi-sectoral business consortium with diversified interests spanning the extractive industry, commodity trading, consumer goods distribution, and Strategic Business Advisory. Established over 10 years ago, the group operates out of its headquarters in Lagos, Nigeria.",
+    "Sedic Group is a multi-sectoral African consortium in extractives, trading, distribution, and strategic advisory, based in Lagos, Nigeria.",
   url: "https://www.sedicgroup.com",
-  ogImage: "/images/og-image.png",
+  ogImage: "/images/og-image.jpg",
   logo: "/images/sedic-logo-dark.png",
 } as const;
+
+/** Absolute site origin for metadata (OG images must resolve on the live host). */
+export function getSiteUrl() {
+  const explicit = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "");
+  if (explicit) return explicit;
+
+  const vercel = process.env.VERCEL_URL?.replace(/\/$/, "");
+  if (vercel) return `https://${vercel}`;
+
+  return siteConfig.url;
+}
 
 export const navLinks: NavLink[] = [
   { label: "About", href: "#about" },
