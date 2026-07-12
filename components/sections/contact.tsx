@@ -6,7 +6,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Loader2, Mail, MapPin, Phone, Globe } from "lucide-react";
 
-import { SedicLogo } from "@/components/layout/sedic-logo";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -59,7 +58,6 @@ export function ContactSection() {
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal>
             <div className="space-y-8 text-white">
-              <SedicLogo inverted className="scale-110 origin-left" />
               <div>
                 <p className="text-xs font-semibold tracking-[0.22em] text-brand-blue-bright uppercase">
                   Get in Touch
