@@ -21,24 +21,58 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Sedic Group — The World's African Business Partner",
+  title: {
+    default: `${siteConfig.name} — ${siteConfig.tagline}`,
+    template: `%s — ${siteConfig.name}`,
+  },
   description: siteConfig.description,
+  applicationName: siteConfig.name,
+  keywords: [
+    "Sedic Group",
+    "African business consortium",
+    "Lagos Nigeria",
+    "extractive industry",
+    "commodity trading",
+    "consumer goods distribution",
+    "strategic business advisory",
+    "Africa investment",
+  ],
+  authors: [{ name: siteConfig.name }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
   metadataBase: new URL(siteConfig.url),
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "Sedic Group — The World's African Business Partner",
+    title: `${siteConfig.name} — ${siteConfig.tagline}`,
     description: siteConfig.description,
     url: siteConfig.url,
     siteName: siteConfig.name,
     locale: "en_NG",
     type: "website",
+    images: [
+      {
+        url: siteConfig.ogImage,
+        width: 1200,
+        height: 630,
+        alt: `${siteConfig.name} logo`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sedic Group — The World's African Business Partner",
+    title: `${siteConfig.name} — ${siteConfig.tagline}`,
     description: siteConfig.description,
+    images: [siteConfig.ogImage],
   },
   icons: {
     icon: "/icon",
+    apple: siteConfig.logo,
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 

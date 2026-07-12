@@ -9,6 +9,7 @@ Drop real photography and logos here. Placeholder surfaces in the UI include pat
 | `hero-building.jpg` | Hero (right panel) — **added** |
 | `sedic-logo.png` | White wordmark (dark backgrounds) — **added** |
 | `sedic-logo-dark.png` | Navy wordmark (light backgrounds) — **added** |
+| `og-image.png` | Open Graph / social share image — **added** |
 | `about-skyline.jpg` | About section — **added** |
 | `mission-skyline.png` | Mission card — **added** |
 | `vision-africa-night.png` | Vision card — **added** |

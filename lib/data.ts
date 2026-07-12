@@ -56,8 +56,10 @@ export const siteConfig = {
   name: "Sedic Group",
   tagline: "The World's African Business Partner",
   description:
-    "Sedic Group is a multi-sectoral African business consortium with interests in extractives, commodity trading, consumer goods distribution, and strategic business advisory.",
+    "Sedic Group is a multi-sectoral business consortium with diversified interests spanning the extractive industry, commodity trading, consumer goods distribution, and Strategic Business Advisory. Established over 10 years ago, the group operates out of its headquarters in Lagos, Nigeria.",
   url: "https://www.sedicgroup.com",
+  ogImage: "/images/og-image.png",
+  logo: "/images/sedic-logo-dark.png",
 } as const;
 
 export const navLinks: NavLink[] = [
