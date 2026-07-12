@@ -65,70 +65,34 @@ export function Navbar() {
           : "bg-transparent"
       )}
     >
-      <div className="mx-auto grid h-16 max-w-7xl grid-cols-[1fr_auto_1fr] items-center gap-4 px-4 sm:px-6 lg:px-8">
-        {/* Left — logo (animates in once hero logo leaves view) */}
-        <div className="flex min-w-0 items-center justify-start">
-          <Link
-            href="#top"
-            aria-hidden={!showNavLogo}
-            tabIndex={showNavLogo ? undefined : -1}
-            className={cn(
-              "rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
-              "transition-[opacity,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
-              showNavLogo
-                ? "translate-x-0 opacity-100"
-                : "pointer-events-none -translate-x-3 opacity-0"
-            )}
-          >
-            <SedicLogo inverted={useLightLogo} priority />
-          </Link>
-        </div>
-
-        {/* Center — primary links */}
-        <nav
-          className="hidden items-center justify-center gap-x-1 xl:gap-x-2 lg:flex"
-          aria-label="Primary"
+      {/* Mobile — logo left, toggles grouped right */}
+      <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:hidden">
+        <Link
+          href="#top"
+          aria-hidden={!showNavLogo}
+          tabIndex={showNavLogo ? undefined : -1}
+          className={cn(
+            "inline-flex rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+            "transition-[opacity,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
+            showNavLogo
+              ? "translate-x-0 opacity-100"
+              : "pointer-events-none -translate-x-3 opacity-0"
+          )}
         >
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className={cn(
-                "rounded-md px-2.5 py-2 text-[0.8125rem] font-medium whitespace-nowrap transition-colors xl:px-3 xl:text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
-                onDarkHero
-                  ? "text-white/75 hover:text-white"
-                  : "text-muted-foreground hover:text-foreground"
-              )}
-            >
-              {link.label}
-            </a>
-          ))}
-        </nav>
+          <SedicLogo inverted={useLightLogo} priority />
+        </Link>
 
-        {/* Right — actions */}
-        <div className="flex items-center justify-end gap-1 sm:gap-2">
-          <div
-            className={cn(
-              onDarkHero && "[&_button]:text-white [&_button:hover]:bg-white/10"
-            )}
-          >
-            <ThemeToggle />
-          </div>
-          <a
-            href="#contact"
-            className={cn(
-              buttonVariants({ size: "lg" }),
-              "hidden rounded-full bg-brand-blue px-5 text-white hover:bg-brand-blue-bright sm:inline-flex"
-            )}
-          >
-            Contact Us
-          </a>
-
+        <div
+          className={cn(
+            "flex items-center gap-1",
+            onDarkHero && "[&_button]:text-white [&_button:hover]:bg-white/10"
+          )}
+        >
+          <ThemeToggle />
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger
               className={cn(
                 buttonVariants({ variant: "ghost", size: "icon" }),
-                "lg:hidden",
                 onDarkHero && "text-white hover:bg-white/10 hover:text-white"
               )}
               aria-label="Open menu"
@@ -164,6 +128,65 @@ export function Navbar() {
               </nav>
             </SheetContent>
           </Sheet>
+        </div>
+      </div>
+
+      {/* Desktop */}
+      <div className="mx-auto hidden h-16 max-w-7xl grid-cols-[1fr_auto_1fr] items-center gap-4 px-4 sm:px-6 lg:grid lg:px-8">
+        <div className="flex min-w-0 items-center justify-start">
+          <Link
+            href="#top"
+            aria-hidden={!showNavLogo}
+            tabIndex={showNavLogo ? undefined : -1}
+            className={cn(
+              "rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+              "transition-[opacity,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
+              showNavLogo
+                ? "translate-x-0 opacity-100"
+                : "pointer-events-none -translate-x-3 opacity-0"
+            )}
+          >
+            <SedicLogo inverted={useLightLogo} priority />
+          </Link>
+        </div>
+
+        <nav
+          className="flex items-center justify-center gap-x-1 xl:gap-x-2"
+          aria-label="Primary"
+        >
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className={cn(
+                "rounded-md px-2.5 py-2 text-[0.8125rem] font-medium whitespace-nowrap transition-colors xl:px-3 xl:text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+                onDarkHero
+                  ? "text-white/75 hover:text-white"
+                  : "text-muted-foreground hover:text-foreground"
+              )}
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+
+        <div className="flex items-center justify-end gap-1 sm:gap-2">
+          <div
+            className={cn(
+              onDarkHero && "[&_button]:text-white [&_button:hover]:bg-white/10"
+            )}
+          >
+            <ThemeToggle />
+          </div>
+          <a
+            href="#contact"
+            className={cn(
+              buttonVariants({ size: "lg" }),
+              "rounded-full bg-brand-blue px-5 text-white hover:bg-brand-blue-bright"
+            )}
+          >
+            Contact Us
+          </a>
         </div>
       </div>
     </header>
