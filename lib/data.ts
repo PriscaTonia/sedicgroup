@@ -58,18 +58,27 @@ export const siteConfig = {
   /** Keep ~125–150 chars for search & social previews */
   description:
     "Sedic Group is a multi-sectoral African consortium in extractives, trading, distribution, and strategic advisory, based in Lagos, Nigeria.",
-  url: "https://www.sedicgroup.com",
+  /**
+   * Canonical site origin used for OG/meta absolute URLs.
+   * Update this (and NEXT_PUBLIC_SITE_URL) when the custom domain goes live.
+   */
+  url: "https://sedicgroup.vercel.app",
   ogImage: "/images/og-image.jpg",
   logo: "/images/sedic-logo-dark.png",
 } as const;
 
-/** Absolute site origin for metadata (OG images must resolve on the live host). */
+/**
+ * Absolute site origin for metadata.
+ * Order: NEXT_PUBLIC_SITE_URL → VERCEL_URL → siteConfig.url
+ */
 export function getSiteUrl() {
-  const explicit = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "");
+  const explicit = process.env.NEXT_PUBLIC_SITE_URL?.trim().replace(/\/$/, "");
   if (explicit) return explicit;
 
-  const vercel = process.env.VERCEL_URL?.replace(/\/$/, "");
-  if (vercel) return `https://${vercel}`;
+  const vercel = process.env.VERCEL_URL?.trim().replace(/\/$/, "");
+  if (vercel) {
+    return vercel.startsWith("http") ? vercel : `https://${vercel}`;
+  }
 
   return siteConfig.url;
 }

@@ -21,6 +21,7 @@ const inter = Inter({
 });
 
 const siteUrl = getSiteUrl();
+const ogImageUrl = new URL(siteConfig.ogImage, `${siteUrl}/`).toString();
 
 export const metadata: Metadata = {
   title: {
@@ -55,7 +56,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: siteConfig.ogImage,
+        url: ogImageUrl,
         width: 1200,
         height: 630,
         alt: `${siteConfig.name} logo`,
@@ -67,7 +68,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${siteConfig.name} — ${siteConfig.tagline}`,
     description: siteConfig.description,
-    images: [siteConfig.ogImage],
+    images: [ogImageUrl],
   },
   icons: {
     icon: "/icon",
