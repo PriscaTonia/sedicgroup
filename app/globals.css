@@ -1,26 +1,210 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-body);
+  --font-heading: var(--font-heading);
   --font-mono: var(--font-geist-mono);
+
+  /* Sedic brand tokens */
+  --color-navy-950: var(--navy-950);
+  --color-navy-900: var(--navy-900);
+  --color-navy-800: var(--navy-800);
+  --color-navy-700: var(--navy-700);
+  --color-brand-blue: var(--brand-blue);
+  --color-brand-blue-bright: var(--brand-blue-bright);
+  --color-accent-orange: var(--accent-orange);
+  --color-accent-green: var(--accent-green);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-muted-text: var(--muted-text);
+
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  /* Brand palette — light */
+  --navy-950: #0f2540;
+  --navy-900: #152b45;
+  --navy-800: #0f2a4a;
+  --navy-700: #1e4d7b;
+  --brand-blue: #2563a6;
+  --brand-blue-bright: #1b6fc9;
+  --accent-orange: #e8632c;
+  --accent-green: #6baa2c;
+  --surface: #f7f9fc;
+  --surface-elevated: #ffffff;
+  --muted-text: #5a6b7d;
+
+  --background: #f7f9fc;
+  --foreground: #152b45;
+  --card: #ffffff;
+  --card-foreground: #152b45;
+  --popover: #ffffff;
+  --popover-foreground: #152b45;
+  --primary: #0f2a4a;
+  --primary-foreground: #f7f9fc;
+  --secondary: #e8eef5;
+  --secondary-foreground: #0f2540;
+  --muted: #e8eef5;
+  --muted-foreground: #5a6b7d;
+  --accent: #e8eef5;
+  --accent-foreground: #0f2540;
+  --destructive: #dc2626;
+  --border: #d5dee9;
+  --input: #d5dee9;
+  --ring: #2563a6;
+  --chart-1: #2563a6;
+  --chart-2: #6baa2c;
+  --chart-3: #e8632c;
+  --chart-4: #1e4d7b;
+  --chart-5: #152b45;
+  --radius: 0.75rem;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #152b45;
+  --sidebar-primary: #0f2a4a;
+  --sidebar-primary-foreground: #f7f9fc;
+  --sidebar-accent: #e8eef5;
+  --sidebar-accent-foreground: #0f2540;
+  --sidebar-border: #d5dee9;
+  --sidebar-ring: #2563a6;
+}
+
+.dark {
+  /* Brand palette — dark */
+  --navy-950: #070e16;
+  --navy-900: #0b1420;
+  --navy-800: #0d1b2a;
+  --navy-700: #1e4d7b;
+  --brand-blue: #3b82c4;
+  --brand-blue-bright: #4a9ae0;
+  --accent-orange: #f07a45;
+  --accent-green: #7fc03a;
+  --surface: #0b1420;
+  --surface-elevated: #152b45;
+  --muted-text: #9aadc0;
+
+  --background: #0b1420;
+  --foreground: #e7edf5;
+  --card: #152b45;
+  --card-foreground: #e7edf5;
+  --popover: #152b45;
+  --popover-foreground: #e7edf5;
+  --primary: #3b82c4;
+  --primary-foreground: #0b1420;
+  --secondary: #1a2d42;
+  --secondary-foreground: #e7edf5;
+  --muted: #1a2d42;
+  --muted-foreground: #9aadc0;
+  --accent: #1a2d42;
+  --accent-foreground: #e7edf5;
+  --destructive: #f87171;
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: #3b82c4;
+  --chart-1: #3b82c4;
+  --chart-2: #7fc03a;
+  --chart-3: #f07a45;
+  --chart-4: #1e4d7b;
+  --chart-5: #e7edf5;
+  --sidebar: #152b45;
+  --sidebar-foreground: #e7edf5;
+  --sidebar-primary: #3b82c4;
+  --sidebar-primary-foreground: #0b1420;
+  --sidebar-accent: #1a2d42;
+  --sidebar-accent-foreground: #e7edf5;
+  --sidebar-border: oklch(1 0 0 / 12%);
+  --sidebar-ring: #3b82c4;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply scroll-smooth font-sans;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading), ui-sans-serif, system-ui, sans-serif;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Soft grain / glow helpers for dark banners */
+.sedic-grain {
+  position: relative;
+  isolation: isolate;
+}
+
+.sedic-grain::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.35;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgb(37 99 166 / 0.35), transparent),
+    radial-gradient(ellipse 60% 40% at 90% 80%, rgb(232 99 44 / 0.08), transparent),
+    radial-gradient(ellipse 50% 30% at 10% 70%, rgb(107 170 44 / 0.08), transparent);
+}
+
+.sedic-grain::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
